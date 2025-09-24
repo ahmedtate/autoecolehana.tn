@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Auto-école Hana — مدرسة هناء لتعليم السياقة</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon (optionnel) -->
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <style>
+    :root{
+      --blue:#0b66d0;       /* accent principal */
+      --blue-700:#084f9a;
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.7);
+      --container:1100px;
+      --radius:14px;
+    }
+
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:linear-gradient(180deg,#f7fbff 0%, #ffffff 100%);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.55;
+    }
+    .container{max-width:var(--container);margin:0 auto;padding:0 18px}
+
+    /* Header */
+    header.topbar{
+      position:sticky;top:0;z-index:60;
+      backdrop-filter:saturate(140%) blur(6px);
+      background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+      border-bottom:1px solid rgba(11,102,208,0.06);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;padding:14px 0;
+      gap:12px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:68px;height:68px;object-fit:contain;border-radius:10px;background:#fff;padding:6px;box-shadow:0 8px 28px rgba(11,102,208,0.06)}
+    .brand h1{margin:0;font-size:18px;font-weight:700}
+    .brand .arab{display:block;font-size:13px;color:var(--muted);margin-top:2px;font-weight:500}
+
+    .nav-right{display:flex;align-items:center;gap:14px}
+    .contact-small a{color:var(--blue);text-decoration:none;font-weight:600;margin-right:10px}
+    .lang-switch{display:flex;gap:6px}
+    .lang-switch button{padding:8px 10px;border-radius:8px;border:1px solid #e6f0ff;background:#fff;cursor:pointer;font-weight:600}
+    .lang-switch .active{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+    /* Hero */
+    .hero{
+      display:flex;align-items:center;gap:28px;padding:44px 0 64px;
+      background:linear-gradient(180deg, rgba(11,102,208,0.03), rgba(255,255,255,0));
+      overflow:hidden;
+    }
+    .hero-left{flex:1;max-width:720px}
+    .kicker{display:inline-block;background:linear-gradient(90deg,var(--blue),var(--blue-700));color:#fff;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px;margin-bottom:12px}
+    .title-fr,.title-ar{margin:0 0 12px;font-size:34px;line-height:1.05;color:var(--blue-700);font-weight:700}
+    .lead{color:var(--muted);margin-bottom:18px;font-size:16px}
+    .cta-group{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;border:2px solid transparent;cursor:pointer;transition:all .18s ease}
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 30px rgba(11,102,208,0.08)}
+    .btn-ghost{background:transparent;color:var(--blue);border-color:var(--blue)}
+    .btn:hover{transform:translateY(-3px)}
+
+    /* hero-right card */
+    .hero-right{width:340px;min-width:220px}
+    .card{background:#fff;padding:18px;border-radius:14px;box-shadow:0 12px 40px rgba(11,102,208,0.06)}
+    .card h3{margin:0 0 8px;font-size:18px;color:var(--blue-700)}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:10px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Services */
+    .section{padding:44px 0}
+    .section-title{display:flex;align-items:center;gap:12px;font-size:20px;margin-bottom:18px;color:var(--blue-700);font-weight:700}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .service{
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border-radius:12px;padding:16px;border:1px solid rgba(11,102,208,0.04);transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .service:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(11,102,208,0.06)}
+    .service h4{margin:0 0 8px;color:var(--blue)}
+    .service p{margin:0;color:var(--muted)}
+
+    /* Telecode two-col */
+    .two-col{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start}
+    .two-col .col ul{padding-left:18px;color:var(--muted)}
+
+    /* Form */
+    .form .field{display:block;margin-bottom:10px}
+    input[type="text"], input[type="tel"], textarea, select{
+      width:100%;padding:12px;border-radius:10px;border:1px solid #e6f2ff;background:#fff;font-size:14px;
+    }
+    textarea{resize:vertical}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
+
+    /* Map placeholder */
+    .map-box{height:220px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#eef7ff,#ffffff);display:flex;align-items:center;justify-content:center;color:var(--muted);border:1px dashed rgba(11,102,208,0.08)}
+
+    /* Footer */
+    footer.site-footer{padding:22px 0;background:linear-gradient(90deg,var(--blue-700),var(--blue));color:#fff;margin-top:28px;border-radius:12px 12px 0 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .footer-inner a{color:#fff;text-decoration:underline}
+
+    /* Small screens */
+    @media (max-width:980px){
+      .hero{flex-direction:column}
+      .hero-right{width:100%}
+      .two-col{grid-template-columns:1fr}
+      .nav{flex-direction:row;align-items:center}
+      .brand h1{font-size:16px}
+      .title-fr,.title-ar{font-size:26px}
+    }
+
+    /* RTL / Arabic */
+    html[dir="rtl"]{direction:rtl}
+    .lang-ar .name-fr, .lang-ar .title-fr, .lang-ar .lead-fr, .lang-ar .section-title-fr, .lang-ar .lbl-fr,
+    .lang-ar .slogan-fr { display:none !important; }
+    .lang-fr .name-ar, .lang-fr .title-ar, .lang-fr .lead-ar, .lang-fr .section-title-ar, .lang-fr .lbl-ar,
+    .lang-fr .slogan-ar { display:none !important; }
+
+    /* Reveal animation for sections */
+    section{opacity:0;transform:translateY(10px);transition:all .6s ease}
+    section.visible{opacity:1;transform:none}
+  </style>
+</head>
+
+<body class="lang-fr">
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <!-- Remplace logo.png par le logo que tu as envoyé -->
+        <img src="logo.png" alt="Logo Auto-école Hana" class="logo">
+        <div>
+          <h1>Auto-école Hana</h1>
+          <span class="arab">مدرسة هناء لتعليم السياقة</span>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="contact-small">
+          <a href="tel:+21698555059">📱 98 55 50 59</a>
+          <span style="color:rgba(11,102,208,0.12)">•</span>
+          <a href="tel:+21671806336">📠 Fax 71 80 63 36</a>
+        </div>
+
+        <div class="lang-switch" role="tablist" aria-label="Langues">
+          <button id="btn-fr" class="active" aria-pressed="true">FR</button>
+          <button id="btn-ar" aria-pressed="false">ع</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero container" aria-label="Héro">
+      <div class="hero-left">
+        <span class="kicker">Formation & Télécode</span>
+        <h2 class="title-fr">Apprenez vite — conduisez en confiance.</h2>
+        <h2 class="title-ar">تعلم بسرعة — قد بثقة.</h2>
+
+        <p class="lead lead-fr">
+          Auto-école Hana propose des formations complètes au télécode et à la conduite, adaptées aux exigences tunisiennes :
+          cours théoriques, tests blancs et sessions pratiques encadrées.
+        </p>
+        <p class="lead lead-ar">
+          تقدم مدرسة هناء دورات كاملة لتعليم قواعد المرور والتدريب العملي بما يتوافق مع متطلبات تونس:
+          دروس نظرية، اختبارات محاكاة وجلسات عملية مع مدربين محترفين.
+        </p>
+
+        <div class="cta-group">
+          <a class="btn btn-primary" href="#formation">Voir la formation Télécode</a>
+          <a class="btn btn-ghost" href="#contact">Contact / Inscription</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card" style="display:flex;flex-direction:column;gap:8px;">
+          <h3>Contact rapide</h3>
+          <div class="meta"><strong>GSM :</strong> <a href="tel:+21698555059">98 55 50 59</a></div>
+          <div class="meta"><strong>Fax :</strong> 71 80 63 36</div>
+          <div class="meta"><strong>Adresse :</strong></div>
+          <div class="small">تسعة نهج محمد الشنيق حي الخضراء تونس 1003</div>
+          <div class="meta"><strong>Horaires :</strong> Lun–Sam, 08:00 — 20:00</div>
+          <a class="btn btn-primary" href="#contact" style="align-self:flex-start;margin-top:8px">S'inscrire</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section container" aria-labelledby="services-title">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <h3 id="services-title" class="section-title">
+          <span class="section-title-fr">Nos services</span>
+          <span class="section-title-ar">خدماتنا</span>
+        </h3>
+      </div>
+
+      <div class="services-grid" style="margin-top:12px">
+        <div class="service">
+          <h4>Télécode (Préparation)</h4>
+          <p>Cours théoriques complets + tests blancs pour réussir l'examen du code de la route en Tunisie.</p>
+        </div>
+
+        <div class="service">
+          <h4>Conduite (manuel & auto)</h4>
+          <p>Leçons pratiques avec des instructeurs expérimentés : maniement, conduite urbaine, manœuvres.</p>
+        </div>
+
+        <div class="service">
+          <h4>Stage intensif</h4>
+          <p>Programme accéléré pour obtenir le télécode et compléter les heures de conduite rapidement.</p>
+        </div>
+
+        <div class="service">
+          <h4>Perfectionnement</h4>
+          <p>Remise à niveau, conduite défensive et préparation spécifique à l'examen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telecode (détails) -->
+    <section id="formation" class="section container" aria-labelledby="formation-title">
+      <h3 id="formation-title" class="section-title">
+        <span class="section-title-fr">Formation Télécode (Tunisie)</span>
+        <span class="section-title-ar">تكوين التيليكود (تونس)</span>
+      </h3>
+
+      <div class="two-col" style="margin-top:12px">
+        <div class="col">
+          <h4>Qu'est-ce que le Télécode ?</h4>
+          <p>
+            Le télécode est la préparation théorique indispensable pour l'examen du code de la route en Tunisie.
+            Notre formation couvre la signalisation, les règles de priorité, la sécurité routière et la prévention des risques.
+          </p>
+
+          <h4>Programme type</h4>
+          <ul>
+            <li>Règles générales et priorités</li>
+            <li>Panneaux, marquages et signalisations</li>
+            <li>Règles de sécurité : ceinture, distances, limitations</li>
+            <li>Infractions, sanctions et conduite responsable</li>
+            <li>Tests blancs et simulations d'examen</li>
+          </ul>
+
+          <h4>Durée & format</h4>
+          <p>Formation modulaire : généralement 20–40 heures selon le niveau. Sessions collectives et individuelles disponibles.</p>
+
+          <h4>Pourquoi nous choisir ?</h4>
+          <ul>
+            <li>Formateurs expérimentés</li>
+            <li>Méthode moderne + tests en conditions réelles</li>
+            <li>Suivi personnalisé et conseils pratiques</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <div class="card" style="margin-bottom:12px">
+            <h3>Tarifs indicatifs</h3>
+            <p class="small">Nous proposons plusieurs packs : Standard, Intensif, Individuel — contactez-nous pour un devis précis.</p>
+            <ul style="margin:8px 0 0;color:var(--muted)">
+              <li>Pack Standard : cours + tests (sur demande)</li>
+              <li>Pack Intensif : planning compact (sur demande)</li>
+              <li>Session individuelle : tarif personnalisé</li>
+            </ul>
+            <a class="btn btn-ghost" href="#contact" style="margin-top:12px;display:inline-block">Demander un devis</a>
+          </div>
+
+          <div class="card">
+            <h3>FAQ rapide</h3>
+            <p><strong>Q :</strong> Faut-il réserver ? <br><strong>A :</strong> Oui, réservation conseillée pour garantir votre place.</p>
+            <p><strong>Q :</strong> Langues des cours ? <br><strong>A :</strong> Français et Arabe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container" aria-labelledby="contact-title">
+      <h3 id="contact-title" class="section-title">
+        <span class="section-title-fr">Contact & Inscription</span>
+        <span class="section-title-ar">الاتصال والتسجيل</span>
+      </h3>
+
+      <div class="two-col" style="margin-top:12px">
+        <div class="col">
+          <form id="contactForm" class="form card" aria-label="Formulaire d'inscription">
+            <h4 style="margin-top:0">Inscription rapide</h4>
+
+            <label class="lbl-fr">Nom</label>
+            <label class="lbl-ar">الاسم</label>
+            <input required type="text" name="name" placeholder="Votre nom / اسمك">
+
+            <label class="lbl-fr">Téléphone</label>
+            <label class="lbl-ar">الهاتف</label>
+            <input required type="tel" name="phone" placeholder="98 55 50 59">
+
+            <label class="lbl-fr">Formation souhaitée</label>
+            <label class="lbl-ar">التكوين المطلوب</label>
+            <select name="formation" aria-label="Formation souhaitée">
+              <option>---</option>
+              <option>Télécode</option>
+              <option>Conduite manuel</option>
+              <option>Conduite automatique</option>
+              <option>Stage intensif</option>
+            </select>
+
+            <label class="lbl-fr">Message</label>
+            <label class="lbl-ar">الرسالة</label>
+            <textarea name="message" rows="4" placeholder="Message..."></textarea>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:6px">Envoyer / إرسال</button>
+            <p class="note">Nous vous contacterons rapidement pour confirmer. / سنقوم بالاتصال بك قريباً لتأكيد التسجيل.</p>
+          </form>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h4>Où nous trouver</h4>
+            <p class="small">تسعة نهج محمد الشنيق حي الخضراء تونس 1003</p>
+
+            <div class="map-box" role="img" aria-label="Carte - Google Maps - placeholder">
+              <!-- Remplacez par votre iframe Google Maps embed quand prêt -->
+              <div style="text-align:center">
+                <div style="font-weight:700;margin-bottom:6px">Carte interactive</div>
+                <div style="font-size:14px;color:var(--muted)">Collez l'iframe Google Maps ici pour l'intégration réelle</div>
+              </div>
+            </div>
+
+            <h4 style="margin-top:12px">Horaires</h4>
+            <p class="small">Lundi → Samedi : 08:00 — 20:00<br>Dimanche : fermé</p>
+            <p style="margin-top:8px" class="small"><strong>GSM :</strong> <a href="tel:+21698555059">98 55 50 59</a> • <strong>Fax :</strong> 71 80 63 36</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight:700">© <span id="year"></span> Auto-école Hana</div>
+        <div style="opacity:0.9">مدرسة هناء لتعليم السياقة — تسعة نهج محمد الشنيق حي الخضراء تونس 1003</div>
+      </div>
+      <div style="text-align:right">
+        <div class="small" style="opacity:0.95">Langues : Français / العربية</div>
+        <div style="margin-top:6px"><a href="#contact">Contactez-nous</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Lang toggle, reveal, and form stub
+    (function(){
+      const btnFr = document.getElementById('btn-fr');
+      const btnAr = document.getElementById('btn-ar');
+      const body = document.body;
+      const year = document.getElementById('year');
+      year.textContent = new Date().getFullYear();
+
+      function setLang(lang){
+        if(lang === 'ar'){
+          body.classList.remove('lang-fr');
+          body.classList.add('lang-ar');
+          document.documentElement.setAttribute('lang','ar');
+          document.documentElement.setAttribute('dir','rtl');
+          btnAr.classList.add('active'); btnFr.classList.remove('active');
+          btnAr.setAttribute('aria-pressed','true'); btnFr.setAttribute('aria-pressed','false');
+        } else {
+          body.classList.remove('lang-ar');
+          body.classList.add('lang-fr');
+          document.documentElement.setAttribute('lang','fr');
+          document.documentElement.setAttribute('dir','ltr');
+          btnFr.classList.add('active'); btnAr.classList.remove('active');
+          btnFr.setAttribute('aria-pressed','true'); btnAr.setAttribute('aria-pressed','false');
+        }
+      }
+
+      btnFr.addEventListener('click', ()=> setLang('fr'));
+      btnAr.addEventListener('click', ()=> setLang('ar'));
+
+      // reveal sections on scroll
+      const sections = document.querySelectorAll('section');
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting) en.target.classList.add('visible');
+        });
+      }, {threshold:0.12});
+      sections.forEach(s=>obs.observe(s));
+
+      // contact form (no backend) - local feedback
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = form.elements['name'].value || '';
+        const phone = form.elements['phone'].value || '';
+        alert('Merci ' + (name?name:'') + ' — Nous avons reçu votre demande. Nous vous contacterons bientôt.\\n\\nشكراً — تم استلام طلبك.');
+        form.reset();
+      });
+
+      // default
+      setLang('fr');
+    })();
+  </script>
+</body>
+</html>
